@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kargo-ssh
+spec:
+  destination:
+    name: kargo1
+  source:
+    path: kargo
+    repoURL: git@github.com:34fathombelow/kargo_private.git
+    targetRevision: HEAD
+  sources: []
+  project: default
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: false
+    syncOptions:
+      - CreateNamespace=true
